@@ -1,3 +1,4 @@
+//changes made in line : 52 to 68 ; line : 107 to 109 , 111 to 112
 package org.example;
 import java.util.*;
 
@@ -45,8 +46,28 @@ public class Main {
         }
         return totalBill;
     }
+    // Added some basic multi-threading concepts , I've created a separate class called CalculatorThread that implements the Runnable interface ,
+    // this class calculates the total units consumed and the total bill for all users in separate threads.
+    
+    public static class CalculatorThread implements Runnable {
+        private List<User> user_list;
 
-    public static void main(String[] args) throws IOException {
+        public CalculatorThread(List<User> user_list) {
+            this.user_list = user_list;
+        }
+        @Override
+        public void run() {
+            // Calculate total units consumed by all users
+            float totalUnitsConsumed = calculateTotalUnitsConsumed(user_list);
+            System.out.println("Total units consumed by all users (Thread): " + totalUnitsConsumed);
+
+            // Calculate total bill for all users
+            float totalBill = calculateTotalBill(user_list);
+            System.out.println("Total bill for all users (Thread): " + totalBill);
+        }
+    }
+//InterruptedException added 
+    public static void main(String[] args) throws IOException, InterruptedException  {
 
         // Call the method to create and display the GUI
 //        createAndShowGUI();
@@ -81,6 +102,14 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> user_list = new ArrayList<>();
+        
+        // Created a CalculatorThread and start it
+        CalculatorThread calculatorThread = new CalculatorThread(user_list);
+        Thread calculatorThreadObj = new Thread(calculatorThread);
+        calculatorThreadObj.start();
+        
+        // Wait for the thread to finish executing
+        calculatorThreadObj.join();
 
         int choice;
         do {
