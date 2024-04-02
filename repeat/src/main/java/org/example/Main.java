@@ -25,51 +25,6 @@ import java.awt.event.ActionListener;
 
 public class Main {
 
-//    // Method to create and display the GUI
-//    public static void createAndShowGUI() {
-//        // Create a new JFrame
-//        JFrame frame = new JFrame("GUI for Users");
-//
-//        // Set the size of the frame
-//        frame.setSize(400, 300);
-//
-//        // Set the default close operation
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        // Create a new JLabel
-//        JLabel label = new JLabel("Enter your name:");
-//
-//        // Create a new JTextField
-//        JTextField textField = new JTextField(20);
-//
-//        // Create a new JButton
-//        JButton button = new JButton("Submit");
-//
-//        // Add ActionListener to the button
-//        button.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String input = textField.getText();
-//                // Do something with the input, for example:
-//                JOptionPane.showMessageDialog(frame, "Hello, " + input + "!");
-//            }
-//        });
-//
-//        // Create a new JPanel
-//        JPanel panel = new JPanel();
-//
-//        // Add the components to the panel
-//        panel.add(label);
-//        panel.add(textField);
-//        panel.add(button);
-//
-//        // Add the panel to the frame
-//        frame.add(panel);
-//
-//        // Set the frame to be visible
-//        frame.setVisible(true);
-//    }
-
     public static float calculateTotalUnitsConsumed(ArrayList<User> user_list) {
         float totalUnitsConsumed = 0.0f;
 
